@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { Target, User, Trophy } from 'lucide-react-native';
+import { Target, User, Trophy, Activity } from 'lucide-react-native';
 import { soloTheme } from '@/constants/theme';
 
 export default function TabLayout() {
@@ -23,6 +23,13 @@ export default function TabLayout() {
         options={{
           title: 'Quests',
           tabBarIcon: ({ size, color }) => <Target size={size} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="stats"
+        options={{
+          title: 'Status',
+          tabBarIcon: ({ size, color }) => <Activity size={size} color={color} />,
         }}
       />
       <Tabs.Screen

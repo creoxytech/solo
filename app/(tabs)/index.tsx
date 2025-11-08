@@ -20,7 +20,7 @@ import { GradientButton } from '@/components/GradientButton';
 import { soloTheme, difficultyConfig, calculateLevel } from '@/constants/theme';
 
 export default function QuestsScreen() {
-  const { user, profile } = useAuth();
+  const { user, profile, refreshProfile } = useAuth();
   const [habits, setHabits] = useState<Habit[]>([]);
   const [loading, setLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
@@ -92,7 +92,10 @@ export default function QuestsScreen() {
 
       const xpEarned = difficultyConfig[habit.difficulty].xp;
       const newXp = profile.experience + xpEarned;
+      const oldLevel = profile.level;
       const newLevel = calculateLevel(newXp);
+      const leveledUp = newLevel > oldLevel;
+      const statPointsEarned = leveledUp ? (newLevel - oldLevel) * 3 : 0;
 
       const today = new Date().toISOString().split('T')[0];
       const { data: lastCompletion } = await supabase
@@ -114,6 +117,16 @@ export default function QuestsScreen() {
 
       const newBestStreak = Math.max(newStreak, habit.best_streak);
 
+      const userUpdates: any = {
+        experience: newXp,
+        level: newLevel,
+        updated_at: new Date().toISOString(),
+      };
+
+      if (statPointsEarned > 0) {
+        userUpdates.stat_points = profile.stat_points + statPointsEarned;
+      }
+
       await Promise.all([
         supabase.from('habit_completions').insert({
           habit_id: habitId,
@@ -128,16 +141,10 @@ export default function QuestsScreen() {
             updated_at: new Date().toISOString(),
           })
           .eq('id', habitId),
-        supabase
-          .from('users')
-          .update({
-            experience: newXp,
-            level: newLevel,
-            updated_at: new Date().toISOString(),
-          })
-          .eq('id', user.uid),
+        supabase.from('users').update(userUpdates).eq('id', user.uid),
       ]);
 
+      await refreshProfile();
       fetchHabits();
     } catch (error) {
       console.error('Error completing habit:', error);
