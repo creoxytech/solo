@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "780957399515",
+    "project_id": "solo-75ba5",
+    "storage_bucket": "solo-75ba5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780957399515:android:f7e3df28fba7e4052b4ffe",
+        "android_client_info": {
+          "package_name": "com.creoxy.solo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780957399515-6g345ag859phsd22gaigk5ahcdetjn1h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeRnTu6vV0NQhTuSpNZYH3HjBKAuq7v00"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780957399515-6g345ag859phsd22gaigk5ahcdetjn1h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780957399515:android:3552b36b26ffaadb2b4ffe",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780957399515-6g345ag859phsd22gaigk5ahcdetjn1h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeRnTu6vV0NQhTuSpNZYH3HjBKAuq7v00"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780957399515-6g345ag859phsd22gaigk5ahcdetjn1h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
